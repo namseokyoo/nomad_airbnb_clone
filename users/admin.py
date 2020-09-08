@@ -8,6 +8,7 @@ from . import models
 class CustomUserAdmin(UserAdmin):
 
     """ Custum User Admin """
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",
@@ -21,8 +22,23 @@ class CustomUserAdmin(UserAdmin):
                     "currency",
                     "superhost",
                 )
-            }
+            },
         ),
+    )
+
+    list_filter = UserAdmin.list_filter + ("superhost",)
+
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",
+        "is_superuser",
     )
     # list_display = ('username', 'gender', 'language', 'currency', 'superhost')
     # list_filter = ("language", "currency", "superhost",)
